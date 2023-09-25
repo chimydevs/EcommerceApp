@@ -28,7 +28,9 @@
             android:text="ChimyDevs"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
 
         <TextView
             android:id="@+id/tvLetsRegister"
@@ -102,7 +104,7 @@
             app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
             app:layout_constraintTop_toBottomOf="@id/idEmailRegister" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/registerButtom"
             android:layout_width="@dimen/mediumButtonWidht"
             android:layout_height="@dimen/mediumButtonHeight"
@@ -114,7 +116,7 @@
 
 
 
-        </androidx.appcompat.widget.AppCompatButton>
+        </br.com.simplepass.loadingbutton.customViews.CircularProgressButton>
 
         <ImageView
             android:id="@+id/facebookRegister"
