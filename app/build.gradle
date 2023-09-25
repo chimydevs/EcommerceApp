@@ -70,14 +70,18 @@ dependencies {
     implementation 'com.shuhart.stepview:stepview:1.5.1'
 
     //Android Ktx
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.2'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.7.3'
 
     //Dagger hilt
-    implementation "com.google.dagger:hilt-android:2.38.1"
+    implementation "com.google.dagger:hilt-android:2.40.4"
     kapt "com.google.dagger:hilt-compiler:2.41"
 
+    // Dagger
+    implementation 'com.google.dagger:dagger:2.41'
+    kapt 'com.google.dagger:dagger-compiler:2.41'
+
     //Firebase
-    implementation 'com.google.firebase:firebase-auth:22.1.1'
+    implementation 'com.google.firebase:firebase-auth:22.1.2'
 
     //Coroutines with firebase
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.6.4'
