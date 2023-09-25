@@ -27,7 +27,9 @@
             android:text="ChimyDevs"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
-            app:layout_constraintTop_toTopOf="parent"></TextView>
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
 
         <TextView
             android:id="@+id/tvLetsLogin"
