@@ -12,10 +12,13 @@ import androidx.lifecycle.lifecycleScope
 import com.chimy.ecommerceapp.R
 import com.chimy.ecommerceapp.data.User
 import com.chimy.ecommerceapp.databinding.FragmentRegisterBinding
+import com.chimy.ecommerceapp.util.RegisterValidation
 import com.chimy.ecommerceapp.util.Resource
 import com.chimy.ecommerceapp.viewmodel.RegisterViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.withContext
 
 private val TAG = "RegisterFragment"
 
@@ -67,7 +70,26 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
                     else -> Unit
                 }
-
+            }
+        }
+        lifecycleScope.launchWhenStarted {
+            viewModel.validation.collect { validation ->
+                if (validation.email is RegisterValidation.Failed) {
+                    withContext(Dispatchers.Main) {
+                        binding.idEmailRegister.apply {
+                            requestFocus()
+                            error = validation.email.message
+                        }
+                    }
+                }
+                if (validation.password is RegisterValidation.Failed) {
+                    withContext(Dispatchers.Main) {
+                        binding.idPasswordRegister.apply {
+                            requestFocus()
+                            error = validation.password.message
+                        }
+                    }
+                }
             }
         }
     }
