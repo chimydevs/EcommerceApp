@@ -112,7 +112,8 @@
             app:layout_constraintStart_toStartOf="@id/guidelineLoginLeft"
             app:layout_constraintEnd_toEndOf="@id/guidelineLoginRight"
             app:layout_constraintTop_toBottomOf="@id/idPasswordRegister"
-            android:text="Register">
+            android:text="Register"
+            app:spinning_bar_color="@color/white">
 
 
 

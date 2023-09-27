@@ -72,6 +72,7 @@
 
     </ImageView>
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonStart"
         android:layout_width="@dimen/smallButtonWidht"
         android:layout_height="@dimen/smallButtonHeight"
         style="@style/blueButtonStyle"
