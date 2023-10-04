@@ -14,8 +14,11 @@ import com.chimy.ecommerceapp.R
 import com.chimy.ecommerceapp.activities.ShoopingActivity
 import com.chimy.ecommerceapp.databinding.FragmentLoginBinding
 import com.chimy.ecommerceapp.databinding.FragmentRegisterBinding
+import com.chimy.ecommerceapp.dialog.setupBottomDialog
 import com.chimy.ecommerceapp.util.Resource
 import com.chimy.ecommerceapp.viewmodel.LoginViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collect
 
@@ -48,6 +51,31 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             }
         }
 
+        binding.tvForgotPassword.setOnClickListener{
+            setupBottomDialog { email ->
+                viewModel.resetPassword(email)
+            }
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.resetPassword.collect{
+                when (it) {
+                    is Resource.Loading -> {
+                    }
+
+                    is Resource.Success -> {
+                        Snackbar.make(requireView(),"Reset link was send to your email", Snackbar.LENGTH_LONG).show()
+                    }
+
+                    is Resource.Error -> {
+                        Snackbar.make(requireView(),"Error: ${it.message}", Snackbar.LENGTH_LONG).show()
+                    }
+
+                    else -> Unit
+                }
+            }
+        }
+
         lifecycleScope.launchWhenStarted {
             viewModel.login.collect {
                 when (it) {
@@ -58,7 +86,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     is Resource.Success -> {
                         binding.buttomLoginLogin.revertAnimation()
                         Intent(requireActivity(), ShoopingActivity::class.java).also { intent ->
-                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
                         }
                     }
