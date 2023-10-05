@@ -11,7 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.chimy.ecommerceapp.R
-import com.chimy.ecommerceapp.activities.ShoopingActivity
+import com.chimy.ecommerceapp.activities.ShoppingActivity
 import com.chimy.ecommerceapp.databinding.FragmentLoginBinding
 import com.chimy.ecommerceapp.databinding.FragmentRegisterBinding
 import com.chimy.ecommerceapp.dialog.setupBottomDialog
@@ -85,7 +85,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                     is Resource.Success -> {
                         binding.buttomLoginLogin.revertAnimation()
-                        Intent(requireActivity(), ShoopingActivity::class.java).also { intent ->
+                        Intent(requireActivity(), ShoppingActivity::class.java).also { intent ->
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
                         }
