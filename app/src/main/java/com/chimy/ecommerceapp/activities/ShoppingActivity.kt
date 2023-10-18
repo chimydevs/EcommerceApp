@@ -7,8 +7,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.chimy.ecommerceapp.R
 import com.chimy.ecommerceapp.databinding.ActivityShoopingBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class ShoppingActivity : AppCompatActivity () {
     val binding by lazy {
         ActivityShoopingBinding.inflate(layoutInflater)
