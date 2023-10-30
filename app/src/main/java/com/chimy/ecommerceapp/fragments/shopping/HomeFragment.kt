@@ -43,6 +43,8 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
             FornitureFragment()
         )
 
+        binding.viewPagerHome.isUserInputEnabled = false
+
         val viewpager2Adapter = HomeViewpagerAdapter(categoriesFragments,childFragmentManager,lifecycle)
         binding.viewPagerHome.adapter = viewpager2Adapter
         TabLayoutMediator(binding.tabLayout, binding.viewPagerHome){ tab, position ->
