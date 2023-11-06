@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
 import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
@@ -16,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chimy.ecommerceapp.R
 import com.chimy.ecommerceapp.adapters.SpecialProductsAdapter
 import com.chimy.ecommerceapp.adapters.bestDealsAdapter
-import com.chimy.ecommerceapp.adapters.bestProductAdapter
+import com.chimy.ecommerceapp.adapters.BestProductAdapter
 import com.chimy.ecommerceapp.databinding.FragmentMainCategoryBinding
 import com.chimy.ecommerceapp.util.Resource
 import com.chimy.ecommerceapp.viewmodel.MainCategoryViewModel
@@ -29,7 +28,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     private lateinit var binding: FragmentMainCategoryBinding
     private lateinit var specialProductsAdapter: SpecialProductsAdapter
     private lateinit var bestDealsAdapter: bestDealsAdapter
-    private lateinit var bestProductAdapter: bestProductAdapter
+    private lateinit var bestProductAdapter: BestProductAdapter
     private val viewModel by viewModels<MainCategoryViewModel>()
 
     override fun onCreateView(
@@ -117,7 +116,7 @@ class MainCategoryFragment: Fragment(R.layout.fragment_main_category) {
     }
 
     private fun setupBestProductsRv() {
-        bestProductAdapter = bestProductAdapter()
+        bestProductAdapter = BestProductAdapter()
         binding.rvBestProducts.apply {
             layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.VERTICAL,false)
             adapter = bestProductAdapter

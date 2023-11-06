@@ -10,7 +10,7 @@ import com.bumptech.glide.Glide
 import com.chimy.ecommerceapp.data.Product
 import com.chimy.ecommerceapp.databinding.ProductRvItemBinding
 
-class bestProductAdapter:RecyclerView.Adapter<bestProductAdapter.BestProductsViewHolder>( ){
+class BestProductAdapter:RecyclerView.Adapter<BestProductAdapter.BestProductsViewHolder>( ){
 
 
     inner class BestProductsViewHolder(private val binding: ProductRvItemBinding) : RecyclerView.ViewHolder(binding.root) {
