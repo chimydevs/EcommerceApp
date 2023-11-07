@@ -10,11 +10,13 @@ import com.bumptech.glide.Glide
 import com.chimy.ecommerceapp.data.Product
 import com.chimy.ecommerceapp.databinding.SpecialRvItemBinding
 
-class SpecialProductsAdapter: RecyclerView.Adapter<SpecialProductsAdapter.SpecialProductsAdapterViewHolder>() {
+class SpecialProductsAdapter :
+    RecyclerView.Adapter<SpecialProductsAdapter.SpecialProductsAdapterViewHolder>() {
 
-    inner class SpecialProductsAdapterViewHolder(private val binding: SpecialRvItemBinding): RecyclerView.ViewHolder(binding.root){
+    inner class SpecialProductsAdapterViewHolder(private val binding: SpecialRvItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(product: Product){
+        fun bind(product: Product) {
             binding.apply {
                 Glide.with(itemView).load(product.images[0]).into(imageSpecialRvItem)
                 tvSpecialProductName.text = product.name
@@ -24,7 +26,7 @@ class SpecialProductsAdapter: RecyclerView.Adapter<SpecialProductsAdapter.Specia
 
     }
 
-    private val diffCallback = object : DiffUtil.ItemCallback<Product>(){
+    private val diffCallback = object : DiffUtil.ItemCallback<Product>() {
 
         override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
             return oldItem.id == newItem.id
@@ -37,9 +39,12 @@ class SpecialProductsAdapter: RecyclerView.Adapter<SpecialProductsAdapter.Specia
     }
 
 
-    val differ = AsyncListDiffer(this,diffCallback)
+    val differ = AsyncListDiffer(this, diffCallback)
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialProductsAdapterViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): SpecialProductsAdapterViewHolder {
         return SpecialProductsAdapterViewHolder(
             SpecialRvItemBinding.inflate(
                 LayoutInflater.from(parent.context), parent, false
@@ -51,7 +56,7 @@ class SpecialProductsAdapter: RecyclerView.Adapter<SpecialProductsAdapter.Specia
         val product = differ.currentList[position]
         holder.bind(product)
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onClick?.invoke(product)
         }
     }

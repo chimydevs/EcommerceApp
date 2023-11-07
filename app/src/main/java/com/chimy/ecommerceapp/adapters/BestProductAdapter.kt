@@ -9,22 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.chimy.ecommerceapp.data.Product
 import com.chimy.ecommerceapp.databinding.ProductRvItemBinding
+import com.chimy.ecommerceapp.helper.getProductPrice
 
-class BestProductAdapter:RecyclerView.Adapter<BestProductAdapter.BestProductsViewHolder>( ){
+class BestProductAdapter : RecyclerView.Adapter<BestProductAdapter.BestProductsViewHolder>() {
 
 
-    inner class BestProductsViewHolder(private val binding: ProductRvItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class BestProductsViewHolder(private val binding: ProductRvItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) {
             binding.apply {
-                Glide.with(itemView).load(product.images[0]).into(imgProduct)
-                product.offerPercentage?.let {
-                    val remainingPricePercentage = 1 - it
-                    val priceAfterOffer = remainingPricePercentage * product.price
-                    tvNewPrice.text = "$ ${String.format("%.2f",priceAfterOffer)}"
-                }
-
-                if(product.offerPercentage == null)
+                val priceAfterOffer = product.offerPercentage.getProductPrice(product.price)
+                tvNewPrice.text = "$ ${String.format("%.2f", priceAfterOffer)}"
+                if (product.offerPercentage == null)
                     tvNewPrice.visibility = View.INVISIBLE
+
+                Glide.with(itemView).load(product.images[0]).into(imgProduct)
                 tvPrice.text = "$ ${product.price}"
                 tvName.text = product.name
             }
@@ -57,7 +56,7 @@ class BestProductAdapter:RecyclerView.Adapter<BestProductAdapter.BestProductsVie
     override fun onBindViewHolder(holder: BestProductsViewHolder, position: Int) {
         val product = differ.currentList[position]
         holder.bind(product)
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             onClick?.invoke(product)
         }
     }
