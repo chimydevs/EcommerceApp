@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shopping_graph"
-    app:startDestination="@id/adressFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -26,11 +26,25 @@
     <fragment
         android:id="@+id/cartFragment"
         android:name="com.chimy.ecommerceapp.fragments.shopping.CartFragment"
-        android:label="CartFragment"
+        android:label="fragment_cart"
         tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_productPreviewFragment2"
+            app:destination="@+id/billingFragment"
+            app:popUpToInclusive="false"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"/>
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
         <action
             android:id="@+id/action_cartFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment2"
+            app:destination="@id/billingFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -56,4 +70,19 @@
         android:label="AdressFragment"
         tools:layout="@layout/fragment_addres"
         />
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.chimy.ecommerceapp.fragments.shopping.BillingFragment"
+        android:label="BillingFragment"
+        tools:layout="@layout/fragment_billing">
+        <action
+            android:id="@+id/action_billingFragment_to_adressFragment"
+            app:destination="@id/adressFragment" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
+        <argument
+            android:name="products"
+            app:argType="com.chimy.ecommerceapp.data.CartProduct[]" />
+    </fragment>
 </navigation>
