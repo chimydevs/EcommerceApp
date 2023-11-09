@@ -1,6 +1,6 @@
 package com.chimy.ecommerceapp.data.order
 
-import android.location.Address
+
 import android.os.Parcelable
 import com.chimy.ecommerceapp.data.Adress
 import com.chimy.ecommerceapp.data.CartProduct

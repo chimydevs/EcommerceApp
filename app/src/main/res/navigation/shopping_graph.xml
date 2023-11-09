@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/shopping_graph"
-    app:startDestination="@id/userAccountFragment">
+    app:startDestination="@id/ordersFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -90,4 +90,9 @@
         android:name="com.chimy.ecommerceapp.fragments.settings.UserAccountFragment"
         android:label="UserAccountFragment"
         tools:layout="@layout/fragment_addres"/>
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.chimy.ecommerceapp.fragments.settings.AllOrdersFragment"
+        android:label="OrdersFragment"
+        tools:layout="@layout/fragment_orders"/>
 </navigation>
